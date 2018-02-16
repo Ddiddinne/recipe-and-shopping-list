@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col-xs-12">
-    <img src="" alt="" class="img-responsive">
+  <div class="col-12">
+    <img [src]="selectedRecipe.imagePath" alt="{{selectedRecipe.nmae}}" class="img-fluid" style="max-height: 200px;">
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
-    <h1>Recipe Name</h1>
+  <div class="col-12">
+    <h1>{{selectedRecipe.name}}</h1>
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-12">
     <div class="btn-group">
       <button tupe="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
       <ul class="dropdown-menu">
@@ -21,12 +21,12 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
-    Description
+  <div class="col-12">
+    {{selectedRecipe.description}}
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-12">
     Ingredients
   </div>
 </div>
