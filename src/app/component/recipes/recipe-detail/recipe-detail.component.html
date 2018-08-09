@@ -10,9 +10,9 @@
 </div>
 <div class="row">
   <div class="col-12">
-    <div class="btn-group dropdown" appDropdown>
-      <button tupe="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
-      <ul class="dropdown-menu">
+    <div class="btn-group dropdown" [ngClass]="{'show': isOpen}">
+      <button tupe="button" class="btn btn-primary dropdown-toggle" #btnMenu (click)='toggleOpen()'>Manage Recipe <span class="caret"></span></button>
+      <ul class="dropdown-menu" #menu>
         <li class="dropdown-item"><a (click)="onAddIngredientsToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
         <li class="dropdown-item"><a style="cursor: pointer" [routerLink]="['edit']" style="color: inherit; text-decoration-line: inherit;">Edit Recipe</a></li>
         <li class="dropdown-item"><a style="cursor: pointer">Remove Recipe</a></li>

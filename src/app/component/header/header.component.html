@@ -10,9 +10,9 @@
             <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/shopping-list">Shopping List</a></li>
         </ul>
         <ul class="nav navbar-nav my-2 my-lg-0">
-            <div class="nav-item dropdown" appDropdown>
-                <a class="nav-link dropdown-toggle" role="button" style="cursor: pointer">Manage <span class="caret"></span></a>
-                <div class="dropdown-menu dropdown-menu-right" >
+            <div class="nav-item dropdown" [ngClass]="{'show': isOpen}">
+                <a class="nav-link dropdown-toggle" role="button" style="cursor: pointer" #btnMenu (click)='toggleOpen()' >Manage <span class="caret"></span></a>
+                <div class="dropdown-menu dropdown-menu-right" #menu>
                     <a class="dropdown-item" style="cursor: pointer">Save Data</a>
                     <a class="dropdown-item" style="cursor: pointer">Fetch Data</a>
                 </div>
