@@ -1,7 +1,7 @@
 import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs';
 
-export class ShoppingListService{
+export class ShoppingListService {
     ingredientsChanged = new Subject<Ingredient[]>();
     startedEditing = new Subject<number>();
     private ingredients: Ingredient[] = [
@@ -9,7 +9,7 @@ export class ShoppingListService{
         new Ingredient('Orange', 10)
     ];
 
-    getIngredients(){
+    getIngredients() {
         return this.ingredients.slice();
     }
 
@@ -17,20 +17,19 @@ export class ShoppingListService{
         return this.ingredients[index];
     }
 
-    addIngredients(ingredients: Ingredient[]){
-        for(let ingredient of ingredients){
-            var found = false;
-            for(var i = 0; i < this.ingredients.length; i++) {
-                if (this.ingredients[i].name == ingredient.name) {
+    addIngredients(ingredients: Ingredient[]) {
+        for (const ingredient of ingredients) {
+            let found = false;
+            for (let i = 0; i < this.ingredients.length; i++) {
+                if (this.ingredients[i].name === ingredient.name) {
                 this.ingredients[i].amount = Number(this.ingredients[i].amount) + Number(ingredient.amount);
-                //this.ingredientsChanged.emit(this.ingredients.slice());
+                // this.ingredientsChanged.emit(this.ingredients.slice());
                 found = true;
                 break;
                 }
             }
-            if(!found){
-            this.ingredients.push(ingredient);
-            
+            if (!found) {
+                this.ingredients.push(ingredient);
             }
         }
         this.ingredientsChanged.next(this.ingredients.slice());
@@ -42,8 +41,7 @@ export class ShoppingListService{
     }
 
     deleteIngredient(index: number) {
-        this.ingredients.splice(index,1);
+        this.ingredients.splice(index, 1);
         this.ingredientsChanged.next(this.ingredients.slice());
     }
-
 }

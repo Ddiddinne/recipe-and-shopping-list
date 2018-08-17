@@ -11,33 +11,30 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class RecipeDetailComponent implements OnInit {
 
   selectedRecipe: Recipe;
-
   isOpen = false;
   @ViewChild('menu') menu: ElementRef;
   @ViewChild('btnMenu') btnMenu: ElementRef;
 
-
   constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params)=>{
+    this.route.params.subscribe((params: Params) => {
       this.selectedRecipe = this.recipeService.getRecipes()[+params['id']];
-    })
+    });
   }
 
   @HostListener('document:click', ['$event'])
   handleOutsideClick(event) {
-    if(!this.menu.nativeElement.contains(event.target) && !this.btnMenu.nativeElement.contains(event.target)){
+    if (!this.menu.nativeElement.contains(event.target) && !this.btnMenu.nativeElement.contains(event.target)) {
       this.isOpen = false;
     }
   }
-  
-  onAddIngredientsToShoppingList(){
+
+  onAddIngredientsToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.selectedRecipe.ingredients);
   }
 
-  toggleOpen(){
+  toggleOpen() {
     this.isOpen = !this.isOpen;
-}
-
+  }
 }

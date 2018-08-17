@@ -1,28 +1,27 @@
-import { Component, EventEmitter, Output, ViewChild, ElementRef, HostListener, HostBinding } from "@angular/core";
+import { Component, EventEmitter, Output, ViewChild, ElementRef, HostListener, HostBinding } from '@angular/core';
 
 
 @Component({
-    selector:'app-header',
+    selector: 'app-header',
     templateUrl: './header.component.html',
-    styles:[`
+    styles: [`
     .show > .dropdown-menu{display: block;}
     `]
 })
-export class HeaderComponent{
-    
+export class HeaderComponent {
+
     isOpen = false;
     @ViewChild('menu') menu: ElementRef;
     @ViewChild('btnMenu') btnMenu: ElementRef;
 
     @HostListener('document:click', ['$event'])
     handleOutsideClick(event) {
-      if(!this.menu.nativeElement.contains(event.target) && !this.btnMenu.nativeElement.contains(event.target)){
+      if (!this.menu.nativeElement.contains(event.target) && !this.btnMenu.nativeElement.contains(event.target)) {
         this.isOpen = false;
       }
     }
 
-    toggleOpen(){
+    toggleOpen() {
         this.isOpen = !this.isOpen;
     }
-
 }
